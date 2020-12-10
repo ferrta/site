@@ -1,0 +1,45 @@
+<div class="container">
+    <input type="text" class="myInput" value='' placeholder="enter number">
+</div>
+<button onclick="addInput()" >Порахувати</button>
+
+<div class="Result">
+   <p class="result-value">
+
+   </p>
+</div>
+
+<script>
+function addInput(){
+   let input = document.querySelector('.myInput').value;
+   console.log(input);
+  let maxN = 0;
+  let minN = input[0];
+  let maxN_pos = 0;
+  let minN_pos = 0;
+  for(let i = 0; i<input.length; i++){
+   if(input[i] < minN){
+       minN = input[i];
+      minN_pos = i;
+   }
+  }
+
+  for(let i = minN_pos+1; i<=input.length; i++){
+   if(input[i] > maxN || input[i] == maxN){
+    maxN = input[i];
+    maxN_pos = i;
+   }
+  }
+
+
+  console.log('min pos '+minN_pos);
+  console.log('max pos '+maxN_pos);
+  let res ='';
+  for(let i = minN_pos+1; i< maxN_pos; i++){
+   res += input[i]
+  }
+  document.querySelector('.result-value').textContent = res ? res : 'Something go wrong';
+}
+
+
+</script>
